@@ -1,0 +1,42 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    <id>dist</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <baseDirectory>${project.artifactId}</baseDirectory>
+    <files>
+        <!-- jar包配置 -->
+        <file>
+            <source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+            <outputDirectory>lib/</outputDirectory>
+            <fileMode>0664</fileMode>
+        </file>
+        <!--启动脚本-->
+        <file>
+            <source>${project.basedir}/project/bin/run.sh</source>
+            <outputDirectory>start</outputDirectory>
+            <destName>run.sh</destName>
+            <fileMode>0755</fileMode>
+        </file>
+        <file>
+            <source>${project.basedir}/project/bin/run.bat</source>
+            <outputDirectory>start</outputDirectory>
+            <destName>run.bat</destName>
+            <fileMode>0755</fileMode>
+        </file>
+        <!--配置文件-->
+        <file>
+            <source>${project.basedir}/project/conf/tools.properties</source>
+            <outputDirectory>conf/</outputDirectory>
+            <destName>tools.properties</destName>
+        </file>
+        <!-- 日志文件配置 -->
+        <file>
+            <source></source>
+            <outputDirectory>logs/</outputDirectory>
+            <fileMode>0755</fileMode>
+        </file>
+    </files>
+</assembly>
